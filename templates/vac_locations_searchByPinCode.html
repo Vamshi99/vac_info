@@ -6,14 +6,20 @@ Search by pin
 {% block content %}
 <form action="{% url 'searchByPinCodeResults' %}" method="post">
     {% csrf_token %}
-    <input id="pincode" name="pincode" type="text" pattern="[0-9]{6}" placeholder="Enter Pincode">
-    <input id="date" name="date" type="date" placeholder="dd-mm-yyyy">
+    <input id="pincode" name="pincode" type="text" pattern="[0-9]{6}" placeholder="Enter Pincode" required>
+    <input class="date" name="date" type="date" value={{ today }} required>
     <div class="form-check">
         <input type="hidden" name="getFor7Days" value="no">
-        <input class="form-check-input" type="checkbox" value="yes" id="getFor7Days" name="getFor7Days" checked>
+        <input class="form-check-input" type="checkbox" value="yes" id="getFor7Days" name="getFor7Days">
         <label class="form-check-label" for="getfor7Days">
             Get 7 days details Calender
+        </label><br>
+        <input type="hidden" name="Above18Only" value="no">
+        <input class="form-check-input" type="checkbox" value="yes" id="Above18Only" name="Above18Only">
+        <label class="form-check-label" for="Above18Only">
+            Get centers for 18+ age group only
         </label>
     </div>
+    <input type="submit" value="Submit">
 </form>
 {% endblock content %}

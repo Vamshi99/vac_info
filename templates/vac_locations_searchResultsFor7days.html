@@ -5,7 +5,7 @@ Vaccine centers for 7 days period
 
 {% block content %}
 centers
-<table style="width:100%">
+<table style="width:100%" class="table table-striped table-hover">
   <tr>
     <th>Center name</th>
     {% for eachday in datesofNext7days %}
@@ -18,10 +18,16 @@ centers
       {% for eachday in datesofNext7days %}
         {% for session in center.sessions %}
           {% if session.date == eachday %}
-          <td>
-            {{ session.available_capacity}}<br>
-            {{ session.min_age_limit }}<br>
-          </td>
+            {% if Above18Only == "yes" and session.min_age_limit == 18 or Above18Only == "no" %}
+              <td>
+                {{ session.available_capacity}}<br>
+                {{ session.min_age_limit }}<br>
+              </td>
+            {% else %}
+              <td>
+                Not Available
+              </td>
+            {% endif %}
           {% endif %}
         {% endfor %}
       {% endfor %}
