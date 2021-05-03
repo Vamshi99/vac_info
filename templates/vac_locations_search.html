@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}
+Search for vaccine centers
+{% endblock title %}
+
+{% block content %}
+<button type="button">
+    <a href="{% url 'searchByDistrict' %}">Search by District</a>
+</button>
+<button type="button">
+    <a href="{% url 'searchByPinCode' %}">Search by Pin Code</a>
+</button>
+
+{% endblock content %}
+
+
+</table> 

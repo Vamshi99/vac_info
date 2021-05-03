@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+Vaccine centers
+{% endblock title %}
+
+{% block content %}
+<table style="width:100%">
+    <tr>
+    <th>Center name</th>
+    <th>Block name</th>
+    <th>Available capacity</th>
+    <th>Fee type</th>
+    <th>Vaccine Fee</th>
+    <th>Minimum age limit</th>
+    <th>Vaccine name</th>
+    <th>Available slots</th>
+  </tr>
+{% for session in sessions %}
+  <tr>
+  <td>{{ session.name }}</td>
+  <td>{{ session.block_name }}</td>
+  <td>{{ session.available_capacity }}</td>
+  <td>{{ session.fee_type}}</td>
+  <td>{{ session.fee }}</td>
+  <td>{{ session.min_age_limit }}</td>
+  <td>{{ session.vaccine }}</td>
+  <td>{% for slot in session.slots %}
+      {{ slot }}<br>
+  {% endfor %}</td>
+  </tr>
+{% endfor %}
+</table> 
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+Vaccine centers for 7 days period
+{% endblock title %}
+
+{% block content %}
+centers
+<table style="width:100%">
+  <tr>
+    <th>Center name</th>
+    {% for eachday in datesofNext7days %}
+      <th>{{ eachday }}</th>
+    {% endfor %}
+  </tr>
+  {% for center in centers %}
+    <tr>
+      <td>{{ center.name }}</td>
+      {% for eachday in datesofNext7days %}
+        {% for session in center.sessions %}
+          {% if session.date == eachday %}
+          <td>
+            {{ session.available_capacity}}<br>
+            {{ session.min_age_limit }}<br>
+          </td>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </tr>
+  {% endfor %}
+</table> 
+{% endblock content %}
