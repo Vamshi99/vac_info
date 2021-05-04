@@ -18,11 +18,13 @@ centers
       {% for eachday in datesofNext7days %}
         {% for session in center.sessions %}
           {% if session.date == eachday %}
-            {% if Above18Only == "yes" and session.min_age_limit == 18 or Above18Only == "no" %}
+            {% if session.available_capacity > 0%} 
+              {% if Above18Only == "yes" and session.min_age_limit == 18 or Above18Only == "no" %}
               <td>
                 {{ session.available_capacity}}<br>
                 {{ session.min_age_limit }}<br>
               </td>
+              {% endif %}
             {% else %}
               <td>
                 Not Available

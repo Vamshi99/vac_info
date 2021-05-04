@@ -6,12 +6,15 @@ Search for vaccine centers
 {% block content %}
 <button type="button">
     <a href="{% url 'searchByDistrict' %}">Search by District</a>
-</button>
+</button><br><br>
 <button type="button">
     <a href="{% url 'searchByPinCode' %}">Search by Pin Code</a>
+</button><br><br>
+Following two features are not working yet, in progress<br>
+<button type="button">
+    <a href="{% url 'notifyByPin' %}">Notify for booking Availablility by Pin</a>
 </button>
-
+<button type="button">
+    <a href="{% url 'notifyByDistrict' %}">Notify for booking Availablility By District</a>
+</button>
 {% endblock content %}
-
-
-</table> 

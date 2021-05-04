@@ -11,5 +11,8 @@ urlpatterns = [
     path('results/', views.results, name='results'),
     path('error/', views.error, name="error"),
     path('load_districts/',views.load_districts, name="load_districts"),
-
+    path('notifyByPinResults/', views.notifyByPinResults, name="notifyByPinResults"),
+    path('notifyByPin/', views.notifyByPin, name="notifyByPin"),
+    path('notifyByDistrictResults/', views.notifyByDistrictResults, name="notifyByDistrictResults"),
+    path('notifyByDistrict/', views.notifyByDistrict, name="notifyByDistrict"),
 ]

@@ -16,7 +16,7 @@ Vaccine centers
     <th>Available slots</th>
   </tr>
 {% for session in sessions %}
-  {% if Above18Only == "yes" and session.min_age_limit == 18 or Above18Only == "no" %}
+  {% if session.available_capacity > 0 and Above18Only == "yes" and session.min_age_limit == 18 or Above18Only == "no" %}
     <tr>
     <td>{{ session.name }}</td>
     <td>{{ session.block_name }}</td>

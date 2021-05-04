@@ -4,7 +4,7 @@ Search by pin
 {% endblock title %}
 
 {% block content %}
-<form action="{% url 'searchByPinCodeResults' %}" method="post">
+<form action="{% url 'searchByPinCodeResults' %}" method="get">
     {% csrf_token %}
     <input id="pincode" name="pincode" type="text" pattern="[0-9]{6}" placeholder="Enter Pincode" required>
     <input class="date" name="date" type="date" value={{ today }} required>

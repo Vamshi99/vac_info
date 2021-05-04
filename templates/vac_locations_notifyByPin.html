@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}
+Search by pin
+{% endblock title %}
+
+{% block content %}
+<form action="{% url 'searchByPinCodeResults' %}" method="post">
+    {% csrf_token %}
+    <input id="pincode" name="pincode" type="text" pattern="[0-9]{6}" placeholder="Enter Pincode" required>
+    <!--<div class="form-check">
+        <input type="hidden" name="Above18Only" value="no">
+        <input class="form-check-input" type="checkbox" value="yes" id="Above18Only" name="Above18Only">
+        <label class="form-check-label" for="Above18Only">
+            For 18+ age group only
+        </label>
+    </div><br>-->
+    {% comment %} <input id="phone" name="phone" type="text" pattern="[0-9]{10}" placeholder="Enter phone number to send the notification" required><br>
+    <input id="email" name="email" type="email"placeholder="Enter email to send the notification" required> {% endcomment %}
+    <input type="submit" value="Submit">
+    <input type="button" id="get_result" value="get_result">
+</form>
+<div id="notify_result">
+</div>
+<script>
+    // get the list of districts dynamically when changing the state value
+    $("#get_result").click(function () {
+        var pincode = $("#pincode").val();
+        //var above18Only = $("#Above18Only").val();
+        // GET AJAX request to fetch notifcation set status
+        console.log(pincode)
+        $.ajax({
+            type: 'GET',
+            url: "{% url 'notifyByPinResults' %}",
+            data: {"pincode": pincode, "Above18Only": "yes"},
+            success: function (data) {
+                $("#notify_result").html(data);
+            },
+            error: function (data) {
+                console.log(data)
+            }
+        })
+    })
+</script>
+{% endblock content %}
